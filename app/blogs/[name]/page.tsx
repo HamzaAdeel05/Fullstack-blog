@@ -1,14 +1,9 @@
-'use client'
-import { Card } from "@/components/ui/card";
-import { ArrowUpRight } from "lucide-react";
-import ImageCard from "./../../public/image/ImageCard.svg"
-import Image from "next/image";
-import Avatar from "./../../public/image/Avatar.svg"
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { Separator } from '@/components/ui/separator';
+import { SeparatorHorizontal } from 'lucide-react';
+import React from 'react'
 
-const Cards = () => {
+const Blogs = async ({ params }: { params: string }) => {
+    const { name }: any = await params;
     const Blogs =
         [
             {
@@ -75,44 +70,30 @@ const Cards = () => {
                 "date": "12 Jan 2022"
             }
         ]
-    const [blogs, setBlogs] = useState<any[]>([]);
-    useEffect(() => {
-        axios.get("/api/blog").then(res => setBlogs(res.data)).catch(err => console.error(err))
-    }, [])
-
+    const pageData = Blogs.find((post) => post.category === name)
     return (
-        <div
-            className=" bg-no-repeat w-full  "
-            style={{ backgroundImage: "url('/image/bg.svg')" }}
-        >
-            <div className=" mx-auto max-w-350 py-10 ">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-10">
-                    {blogs.map((blog:any) => (
-                        <Link key={blog.name} href={`/blogs/${blog._id}`}>
-                            <Card className="px-5 cursor-pointer ">
-                                <Image alt="card" src={ImageCard} className="w-full" />
-                                <h3 className="text-sm text-purple-700 font-medium">{blog.category}</h3>
-                                <div className="flex justify-between">
-                                    <h2 className="text-2xl font-medium">{blog.title}</h2>
-                                    <ArrowUpRight />
-                                </div>
-                                <h2 className="text-gray-500">{blog.description}</h2>
-                                <div className="">
-                                    <div className="flex gap-4 items-center">
-                                        <Image src={Avatar} alt="Avatar" />
-                                        <div className="text-sm">
-                                            <h2 className="font-medium">{blog.name}</h2>
-                                            <p className="text-gray-500">{blog.createdAt}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Card>
-                        </Link>
-                    ))}
+        <div className='bg-[#F9F5FF] min-h-screen py-10'>
+            <div className=" max-w-320 mx-auto space-y-8">
+                <div className="p-6">
+                    <div className=" space-y-6  flex flex-col justify-center items-center text-center">
+                        <div className="">
+                            <h2 className='font-medium text-purple-900 bg-[#F3EBFF] rounded-full px-2 py-1'>{pageData?.date}</h2>
+                        </div>
+                        <h2 className='text-purple-950 font-semibold text-5xl'>{pageData?.title}</h2>
+                        <h3 className='text-purple-800 text-lg'>{pageData?.author}</h3>
+                    </div>
+                </div>
+                <div className="flex justify-center">
+                    <img className='w-full' src='http://localhost:3000/_next/static/media/ImageCard.79702b74.svg' />
+                </div>
+                <div className="space-y-4">
+                    <h2 className='text-center text-sm text-purple-900'>{pageData?.author}</h2>
+                    <Separator className='px-5'/>
+                    <h3 className='text-gray-600 text-sm'>{pageData?.description}</h3>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Cards;
+export default Blogs
