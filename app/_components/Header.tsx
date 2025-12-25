@@ -4,7 +4,7 @@ import { Search } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-const Header = () => {
+const Header = ({blogs}:{blogs:any}) => {
     return (
         <div className="bg-[#F9F5FF] p-6 ">
             <div className=" space-y-6  flex flex-col justify-center items-center text-center mt-10 max-w-xl mx-auto">

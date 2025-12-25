@@ -24,7 +24,7 @@ export const POST = async (req: Request) => {
         await connect();
         const body = await req.json();
         const { name, title, description, image, blogDes, category, avatar } = body;
-        if (!name || !title || !description || !image || !avatar || !blogDes || !category) {
+        if (!name || !title || !description|| !blogDes || !category) {
             return NextResponse.json({
                 message: "All fields are required"
             },
