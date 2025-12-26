@@ -8,77 +8,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Cards = () => {
-    const Blogs =
-        [
-            {
-                "category": "Design",
-                "title": "UX review presentations",
-                "description": "How do you create compelling presentations that wow your colleagues and impress your managers?",
-                "author": "Olivia Rhye",
-                "date": "20 Jan 2022"
-            },
-            {
-                "category": "Product",
-                "title": "Migrating to Linear 101",
-                "description": "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here’s how to get started.",
-                "author": "Phoenix Baker",
-                "date": "19 Jan 2022"
-            },
-            {
-                "category": "Software Engineering",
-                "title": "Building your API Stack",
-                "description": "The rise of RESTful APIs has been met by a rise in tools for creating, testing, and managing them.",
-                "author": "Lana Steiner",
-                "date": "18 Jan 2022"
-            },
-            {
-                "category": "Management",
-                "title": "Bill Walsh leadership lessons",
-                "description": "Like to know the secrets of transforming a 2-14 team into a 3x Super Bowl winning Dynasty?",
-                "author": "Alec Whitten",
-                "date": "17 Jan 2022"
-            },
-            {
-                "category": "Product",
-                "title": "PM mental models",
-                "description": "Mental models are simple expressions of complex processes or relationships.",
-                "author": "Demi Wilkinson",
-                "date": "16 Jan 2022"
-            },
-            {
-                "category": "Design",
-                "title": "What is Wireframing?",
-                "description": "Introduction to Wireframing and its Principles. Learn from the best in the industry.",
-                "author": "Candice Wu",
-                "date": "15 Jan 2022"
-            },
-            {
-                "category": "Design",
-                "title": "How collaboration makes us better designers",
-                "description": "Collaborating with other designers can help you grow and learn new skills.",
-                "author": "Natali Craig",
-                "date": "14 Jan 2022"
-            },
-            {
-                "category": "Product",
-                "title": "Our top 10 Javascript frameworks to use",
-                "description": "JavaScript frameworks are essential for building modern web applications.",
-                "author": "Drew Cano",
-                "date": "13 Jan 2022"
-            },
-            {
-                "category": "Customer Success",
-                "title": "Podcast: Creating a better CX Community",
-                "description": "Learn how to build a community that supports your customers and your business.",
-                "author": "Orlando Diggs",
-                "date": "12 Jan 2022"
-            }
-        ]
-    const [blogs, setBlogs] = useState<any[]>([]);
-    useEffect(() => {
-        axios.get("/api/blog").then(res => setBlogs(res.data)).catch(err => console.error(err))
-    }, [])
+const Cards = ({blogs}:{blogs:any}) => {
+
 
     return (
         <div
