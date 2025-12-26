@@ -3,8 +3,15 @@ import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+interface Blog {
+    _id: string;
+    title: string;
+    description: string;
+    image: string;  // Cloudinary URL
+    avatar: string; // Cloudinary URL
+}
 
-const Header = ({blogs}:{blogs:any}) => {
+const Header = ({ blogs }: { blogs: Blog[] }) => {
     return (
         <div className="bg-[#F9F5FF] p-6 ">
             <div className=" space-y-6  flex flex-col justify-center items-center text-center mt-10 max-w-xl mx-auto">
@@ -21,7 +28,7 @@ const Header = ({blogs}:{blogs:any}) => {
 
                 </div>
                 <Button variant={'outline'} className=' hover:text-purple-900 border border-purple-400 bg-purple-900 text-white px-10 py-7' asChild><Link href='/createBlog'>
-                Create Your Own Blog
+                    Create Your Own Blog
                 </Link></Button>
             </div>
         </div>

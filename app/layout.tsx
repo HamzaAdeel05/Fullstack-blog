@@ -26,9 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+      cz-shortcut-listen="true"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <main className="max-w-362.5 mx-auto">
         {children}
+        </main>
       </body>
     </html>
   );
